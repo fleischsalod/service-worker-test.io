@@ -10,9 +10,9 @@ this.addEventListener('install', (e) => {
 	console.log('Service Worker installed');
 
 	e.waitUntil(
-		caches.open(cacheName).then((cache) => {
+		caches.open(cacheName).then((cacheName) => {
 			console.log('Cachefiles are cached');
-			return cache.addAll(cacheFiles);
+			return cacheName.addAll(cacheFiles);
 		});
 	);
 });
@@ -38,7 +38,7 @@ this.addEventListener('fetch', (e) => {
 	e.respondWith(
 		caches.match(e.request).then((response) => {
 			if (response) {
-				console.log('Found in cache');
+				console.log('Found in cache',response);
 				return response;
 			} else {
 				const requestClone = e.request.clone();
