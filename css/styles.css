@@ -1,4 +1,6 @@
 body{
+	display: flex;
+	justify-content: center;
 	text-align: center;
 	font-family: 'Lato', sans-serif;
 }
@@ -7,4 +9,5 @@ div {
 	border: 2px solid black;
 	padding: 2px;
 	width: 50%;
+	height: auto;
 }
