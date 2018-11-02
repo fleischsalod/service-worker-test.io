@@ -2,7 +2,7 @@ const cacheName = 'v1';
 const cacheFiles = [
 	'./',
 	'./index.html',
-	'./css/style.css',
+	'./css/styles.css',
 	'./js/app.js'
 ];
 
@@ -27,8 +27,8 @@ this.addEventListener('activate', (e) => {
 					console.log('Removing cached files from', thisCacheName);
 					return caches.delete(thisCacheName);
 				}
-			})
-		}))
+			}));
+		});
 	);
 });
 
