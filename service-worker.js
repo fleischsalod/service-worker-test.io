@@ -6,18 +6,18 @@ const cacheFiles = [
 	'./js/app.js'
 ];
 
-this.addEventListener('install', (e) => {
+this.addEventListener('install', e => {
 	console.log('Service Worker installed');
 
 	e.waitUntil(
-		caches.open(cacheName).then((cache => {
+		caches.open(cacheName).then(cache => {
 			console.log('Cachefiles are cached');
 			return cache.addAll(cacheFiles);
-		}))
+		});
 	);
 });
 
-this.addEventListener('activate', (e) => {
+this.addEventListener('activate', e => {
 	console.log('Service Worker activated');
 
 	e.waitUntil(
@@ -32,14 +32,14 @@ this.addEventListener('activate', (e) => {
 	);
 });
 
-this.addEventListener('fetch', (e) => {
+this.addEventListener('fetch', e => {
 	console.log('Service Worker fetching', e.request.url);
 
 	e.respondWith(
 		caches.match(e.request).then(response => {
-			if response {
+			if (response) {
 				console.log('Found in cache');
-				resturn response;
+				return response;
 			} else {
 				const requestClone = e.request.clone();
 				fetch(requestClone).then(response => {
