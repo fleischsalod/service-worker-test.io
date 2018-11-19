@@ -31,7 +31,7 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-this.addEventListener('fetch', (e) => {
+self.addEventListener('fetch', (e) => {
   console.log('Service Worker fetching', e.request.url);
   e.respondWith(
     caches.match(e.request).then((response) => {
@@ -56,5 +56,27 @@ this.addEventListener('fetch', (e) => {
         });
       }
     })
+  );
+});
+
+self.addEventListener('push', event => {
+  console.log('[Service Worker] Push Received.');
+  console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
+
+  const title = 'Push Notification';
+  const options = {
+    body: 'Click to enter fupa.net!'
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener('notificationclick', function(event) {
+  console.log('[Service Worker] Notification click Received.');
+
+  event.notification.close();
+
+  event.waitUntil(
+    clients.openWindow('https://www.fupa.net/niederbayern')
   );
 });
