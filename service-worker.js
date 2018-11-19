@@ -1,4 +1,4 @@
-const cacheName = 'v2';
+const cacheName = 'v1';
 const cacheFiles = [
   './',
   './index.html',
@@ -58,6 +58,8 @@ self.addEventListener('fetch', (e) => {
     })
   );
 });
+
+// Push Notification
 
 self.addEventListener('push', event => {
   console.log('[Service Worker] Push Received.');
