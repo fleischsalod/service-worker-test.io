@@ -40,7 +40,7 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
 	pushButton.textContent = 'Push Not Supported';
 }
 
-// Umrechnen des public key von base64 zu uint8array
+// Umrechnen des public key von base64 zu UInt8Array (erwartet)
 function urlB64ToUint8Array(base64String) {
   var padding = '='.repeat((4 - base64String.length % 4) % 4);
   var base64 = (base64String + padding)
@@ -84,7 +84,7 @@ function initializeUI() {
 }
 
 function updateBtn() {
-
+	// wbest practice to activate button only when click is possible
 	if (Notification.permission === 'denied') {
     pushButton.textContent = 'Push Messaging Blocked.';
     pushButton.disabled = true;

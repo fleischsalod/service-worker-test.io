@@ -7,7 +7,9 @@ self.addEventListener('push', function(event) {
     body: 'You just sent a push notificaton.'
   };
 
-  event.waitUntil(self.registration.showNotification(title, options));
+  event.waitUntil(
+    self.registration.showNotification(title, options)
+  );
 });
 
 self.addEventListener('notificationclick', function(event) {
