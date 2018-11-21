@@ -8,8 +8,10 @@ var cacheFiles = [
 
 self.addEventListener('install', function(e) {
   console.log('Service Worker installed');
-  //
+  // SW installiert erst wenn code in e.waitUntil ausgeführt ist
+  // Installieren kann einige Zeit dauern
   e.waitUntil(
+    // cacheStorage Objekt in service worker scope | CacheAPI
     caches.open(cacheName).then(function(cacheName) {
       console.log('Cachefiles are cached');
       return cacheName.addAll(cacheFiles);
@@ -17,6 +19,7 @@ self.addEventListener('install', function(e) {
   );
 });
 
+// Clean Up data that is no longer necessary
 self.addEventListener('activate', function(e) {
   console.log('Service Worker activated');
 
@@ -32,24 +35,25 @@ self.addEventListener('activate', function(e) {
   );
 });
 
+// fires every time a http request is fired
 self.addEventListener('fetch', function(e) {
   console.log('Service Worker fetching', e.request.url);
-  //
+  // FetchEvent.respondWith functions as proxy between browser and network
+  // allows us to respond to any request with the response we want:
+  // prepared by SW, from cache or even modified if needed
   e.respondWith(
     caches.match(e.request).then(function(response) {
       if (response) {
         console.log('Found in cache',response);
         return response;
       } else {
-        var requestClone = e.request.clone();
-        fetch(requestClone).then(function(response) {
+        fetch(e.request).then(function(response) {
           if(!response) {
             console.log('No response from fetch');
             return response;
           } else {
-            var responseClone = response.clone();
-            caches.open(cacheName).then(function(cache) {
-              cache.put(e.request, responseClone);
+            return caches.open(cacheName).then(function(cache) {
+              cache.put(e.request, response.clone());
               return response;
             });
           }
