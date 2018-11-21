@@ -146,8 +146,7 @@ function updateSubscriptionOnServer(subscription) {
   // TODO: Send subscription to application server
 
   var subscriptionJson = document.querySelector('.subscription-json');
-  var subscriptionDetails =
-    document.querySelector('.subscription-details');
+  var subscriptionDetails = document.querySelector('.subscription-details');
 
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
