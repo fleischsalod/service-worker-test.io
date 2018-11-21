@@ -18,7 +18,7 @@
 */
 
 var applicationServerPublicKey = 'BEpyaQi6GP_4-ShqEHVTFJaRYXB373TG3AN1h3h-BWwnZImSVlgNgprQwaG7soGUbuj6l_IgyQlyfmuPU6g_vCc';
-var pushButton = document.querySelector('pushbutton');
+var pushButton = document.querySelector('btn');
 var isSubscribed = false;
 var swRegistration = null;
 
