@@ -15,11 +15,3 @@ div {
 div > img {
 	width: 100%;
 }
-
-.is-invisible {
-  opacity: 0;
-}
-
-.subscription-details {
-  transition: opacity 1s;
-}

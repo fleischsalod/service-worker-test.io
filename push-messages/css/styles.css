@@ -1,0 +1,14 @@
+body{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: 'Lato', sans-serif;
+}
+
+.is-invisible {
+  opacity: 0;
+}
+
+.subscription-details {
+  transition: opacity 1s;
+}
