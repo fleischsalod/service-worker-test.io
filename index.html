@@ -12,10 +12,21 @@
 		<div>
 			<img src='https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Nice/Nice%2C%20france-xlarge.jpg' alt='There should be a picture' width="100%" />
 		</div>
-		<p></p>
-		<button type="button" class="btn btn-primary">
-        Send Push Message
-    </button>
+		<p>
+			<button type="button" class="btn btn-primary">
+	        Enable Push Message
+	    </button>
+		</p>
+		<section class="subscription-details js-subscription-details is-invisible">
+      <!-- <p>Once you've subscribed your user, you'd send their subscription to your
+      server to store in a database so that when you want to send a message
+      you can lookup the subscription and send a message to it.</p> -->
+      <p>Copy the following details
+      into the <a href="https://web-push-codelab.glitch.me//">Push Companion
+      Site</a> and it'll send a push message for you, using the application
+      server keys on the site</p>
+      <pre><code class="js-subscription-json"></code></pre>
+    </section>
 
     <script src="js/app.js"></script>
 </body>
