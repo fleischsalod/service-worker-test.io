@@ -1,4 +1,4 @@
-var cacheName = 'v1';
+var cacheName = 'v2';
 var cacheFiles = [
   './',
   './index.html',
@@ -7,7 +7,7 @@ var cacheFiles = [
 ];
 
 self.addEventListener('install', function(e) {
-  console.log('Service Worker installed');
+  console.log('[Service Worker] installed');
   // SW installiert erst wenn code in e.waitUntil ausgeführt ist
   // Installieren kann einige Zeit dauern
   e.waitUntil(
